@@ -1,7 +1,7 @@
 {
   "chord_1": {
-    "solid_angle" : 23234,
-    "square" : 324234,
+    "solid_angle" : ,
+    "square" : 55e-6,
     "poly_num" : 1,
     "radius_TS" : 560,
     "peaces_amount" : 7,
@@ -9,6 +9,8 @@
 
   },
   "chord_2": {
+    "solid_angle" :,
+    "square":50e-6 ,
     "poly_num" : 2,
     "radius_TS" : 550.5,
     "peaces_amount" : 7,
@@ -16,6 +18,8 @@
 
   },
   "chord_3": {
+    "solid_angle" :,
+    "square":110e-6 ,
     "poly_num" : 3,
     "radius_TS" : 529.5,
     "peaces_amount" : 9,
@@ -23,6 +27,8 @@
 
   },
   "chord_4": {
+    "solid_angle" :,
+    "square":107.5e-6 ,
     "poly_num" : 4,
     "radius_TS" : 505,
     "peaces_amount" : 9,
@@ -30,6 +36,8 @@
 
   },
   "chord_5": {
+    "solid_angle" :,
+    "square":102.9e-6,
     "poly_num" : 5,
     "radius_TS" : 481,
     "peaces_amount" : 11,
@@ -37,6 +45,8 @@
 
   },
   "chord_6": {
+    "solid_angle" :,
+    "square": 102.9e-6,
     "poly_num" : 6,
     "radius_TS" : 457.5,
     "peaces_amount" : 13,
@@ -44,6 +54,8 @@
 
   },
   "chord_7": {
+    "solid_angle" :,
+    "square": 94e-6,
     "poly_num" : 7,
     "radius_TS" : 434,
     "peaces_amount" : 13,
@@ -51,6 +63,8 @@
 
   },
   "chord_8": {
+    "solid_angle" :,
+    "square":87.75,
     "poly_num" : 8,
     "radius_TS" : 412,
     "peaces_amount" : 15,
@@ -58,6 +72,8 @@
 
   },
   "chord_9": {
+    "solid_angle" :,
+    "square":89.7,
     "poly_num" : 9,
     "radius_TS" : 391.5,
     "peaces_amount" : 17,
@@ -65,6 +81,8 @@
 
   },
   "chord_10": {
+    "solid_angle" :,
+    "square":83.25,
     "poly_num" : 10,
     "radius_TS" : 560,
     "peaces_amount" : 7,

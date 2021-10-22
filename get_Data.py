@@ -40,7 +40,7 @@ def get_csv_TSdata(sht_num):  # csv
             time.append(float(temp[0]))
         print(len(time))
 
-def get_json_TSdata(sht_num):
+def get_from_json_TSdata(sht_num):
     with open('D:\Ioffe\slowADC\calculations\sht%d\%d.json' % (sht_num, sht_num), 'r') as file:
         TS_data_file = json.load(file)
 
@@ -66,4 +66,30 @@ def get_json_TSdata(sht_num):
         temperature_TS.append(temp_temp)
         concentration_TS.append(temp_conc)
 
-    return temperature_TS,concentration_TS
+    return temperature_TS,concentration_TS,times
+
+def get_from_json_ADCdata_ch1(sht_num):
+
+    adc_time = []
+    poly_ch1 = []
+    with open('D:\Ioffe\slowADC\calculations\sht%d\\192.168.10.50.json' % (sht_num), 'r') as file:
+
+        ADC_data_file = json.load(file)
+        for i in range(1, len(ADC_data_file)):
+            adc_time.append(ADC_data_file[i]['time'])
+
+        for ip in range(4):
+            with open('D:\Ioffe\slowADC\calculations\sht%d\\192.168.10.5%d.json' % (sht_num, ip), 'r') as file:
+                ADC_data_file = json.load(file)
+                for j in range(3):
+                    ch1 = []
+                    for i in range(1, len(ADC_data_file)):
+                        ch1.append(ADC_data_file[i]['ch'][j*5 + 1])
+                    poly_ch1.append(ch1)
+
+
+    return adc_time, poly_ch1
+
+
+
+
