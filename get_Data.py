@@ -53,6 +53,7 @@ def get_from_json_TSdata(sht_num):
         if 'timestamp' in TS_data_file['events'][i] \
                 and TS_data_file['events'][i]['error'] is None \
                 and TS_data_file['events'][i]['T_e'][0]['error'] is None \
+                and TS_data_file['events'][i]['T_e'][5]['error'] is None \
                 and TS_data_file['events'][i]['T_e'][9]['error'] is None:
             index_TS.append(i)
             times.append(TS_data_file['events'][i]['timestamp'])
@@ -60,9 +61,10 @@ def get_from_json_TSdata(sht_num):
     for j in range(len(TS_data_file['events'][1]['T_e'])):
         temp_temp = []
         temp_conc = []
-        for i in index_TS:
-            temp_temp.append(TS_data_file['events'][i]['T_e'][j]['T'])
-            temp_conc.append(TS_data_file['events'][i]['T_e'][j]['n'])
+        print()
+        for ind in index_TS:
+            temp_temp.append(TS_data_file['events'][ind]['T_e'][j]['T'])
+            temp_conc.append(TS_data_file['events'][ind]['T_e'][j]['n'])
         temperature_TS.append(temp_temp)
         concentration_TS.append(temp_conc)
 
@@ -86,8 +88,6 @@ def get_from_json_ADCdata_ch1(sht_num):
                     for i in range(1, len(ADC_data_file)):
                         ch1.append(ADC_data_file[i]['ch'][j*5 + 1])
                     poly_ch1.append(ch1)
-
-
     return adc_time, poly_ch1
 
 

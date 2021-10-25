@@ -36,3 +36,11 @@ def write_ADCdata(sht_num, adc_data,times):
             for i in range(len(adc_data)):
                 line += '%.3e, ' % adc_data[i][j]
             file.write(line + '\n')
+
+def write_dS_dW(sht_num,ds_dw):
+    with open('D:\Ioffe\slowADC\calculations\sht%d\ds_dw.txt' % (sht_num), 'w') as file:
+        file.write('poly number, dS*dOmega \n' )
+
+        for i in range(len(ds_dw)):
+            line = '%d, %.4e' %(i+1,ds_dw[i])
+            file.write(line + '\n')
