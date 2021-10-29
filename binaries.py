@@ -7,7 +7,9 @@ result = []
 adc_range = 5
 ch_count = 16
 
-sht_num = 777
+with open('sht_number.txt','r') as shot_file:
+    sht_num = int(shot_file.read())
+
 ch_map = [0, 8, 1, 9, 2, 10, 3, 11, 5, 13, 4, 12, 7, 15, 6, 14]
 
 ADC_ip = ['192.168.10.50',

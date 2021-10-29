@@ -2,18 +2,24 @@ import json
 
 def get_txt_slowADC_ch(sht_num, ch_num): # возвращает список с выбранным каналом каждого полихроматора c slow adc from txt
     all_ch = []
+    times = []
+
     for ip in range(3):
         data = []
         with open('D:\Ioffe\slowADC\calculations\sht%d\\192.168.10.5%d.txt' % (sht_num, ip), 'r') as file:
             for line in file:
                 data.append([float(x) for x in line.split()])
+
         for poly_num in range(3):
             ch1 = []
             for i in range(len(data)):
                 ch1.append(data[i][1+ch_num + poly_num * 5])
 
             all_ch.append(ch1)
-    return all_ch
+
+    for j in range(len(data)):
+        times.append(data[j][0] * 0.002)
+    return all_ch,times
 
 def get_csv_TSdata(sht_num):  # csv
     radius = []
@@ -54,6 +60,7 @@ def get_from_json_TSdata(sht_num):
                 and TS_data_file['events'][i]['error'] is None \
                 and TS_data_file['events'][i]['T_e'][0]['error'] is None \
                 and TS_data_file['events'][i]['T_e'][5]['error'] is None \
+                and TS_data_file['events'][i]['T_e'][4]['error'] is None \
                 and TS_data_file['events'][i]['T_e'][9]['error'] is None:
             index_TS.append(i)
             times.append(TS_data_file['events'][i]['timestamp'])
@@ -72,6 +79,7 @@ def get_from_json_TSdata(sht_num):
 
 def get_from_json_ADCdata_ch1(sht_num):
 
+    ADC_num = 4
     adc_time = []
     poly_ch1 = []
     with open('D:\Ioffe\slowADC\calculations\sht%d\\192.168.10.50.json' % (sht_num), 'r') as file:
@@ -80,13 +88,14 @@ def get_from_json_ADCdata_ch1(sht_num):
         for i in range(1, len(ADC_data_file)):
             adc_time.append(ADC_data_file[i]['time'])
 
-        for ip in range(4):
+        #for ip in range(4):
+        for ip in range(ADC_num):
             with open('D:\Ioffe\slowADC\calculations\sht%d\\192.168.10.5%d.json' % (sht_num, ip), 'r') as file:
                 ADC_data_file = json.load(file)
                 for j in range(3):
                     ch1 = []
                     for i in range(1, len(ADC_data_file)):
-                        ch1.append(ADC_data_file[i]['ch'][j*5 + 1])
+                        ch1.append(float(ADC_data_file[i]['ch'][j*5 + 1]))
                     poly_ch1.append(ch1)
     return adc_time, poly_ch1
 
