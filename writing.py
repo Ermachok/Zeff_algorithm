@@ -14,7 +14,7 @@ def write_TS_data(sht_num,temperature,concentration,times):
     with open('D:\Ioffe\slowADC\calculations\sht%d\%d_TS_all_data.txt' % (sht_num,sht_num) ,'w') as file:
         line = 'time,'
         for i in range(number_of_poly):
-            line+='poly%d_T, poly%d_n, ' %(i, int(i+1))
+            line+='poly%d_T, poly%d_n, ' %(int(i+1), int(i+1))
         file.write(line + '\n')
         for j in range(len(times)):
             line = '%.3f,' % (times[j])

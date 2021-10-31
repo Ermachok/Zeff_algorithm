@@ -19,6 +19,7 @@ def get_txt_slowADC_ch(sht_num, ch_num): # возвращает список с 
 
     for j in range(len(data)):
         times.append(data[j][0] * 0.002)
+
     return all_ch,times
 
 def get_csv_TSdata(sht_num):  # csv

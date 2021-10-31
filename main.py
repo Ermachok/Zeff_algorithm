@@ -28,7 +28,7 @@ dif_time = []
 ds_dw = []
 
 for i in range(1,11):
-    ds_dw.append(config['chord_%d' %i]['solid_angle'] * config['chord_%d' %i]['square'] )
+    ds_dw.append(config['chord_%d' %i]['solid_angle'] * config['chord_%d' %i]['square'])
 
 writing.write_dS_dW(sht_num,ds_dw)
 
@@ -54,8 +54,12 @@ for time in range(len(times_TS)):
                                                                           (chord_num + 1), config['chord_%d' % (chord_num + 1)]['peaces'][peace_num],
                                                                           concentration_TS[peace_num][time],
                                                                           temperature_TS[peace_num][time]))
-                    z_eff += config['chord_%d' % (chord_num + 1)]['peaces'][peace_num] * concentration_TS[peace_num][time] ** 2 \
-                             * temperature_TS[peace_num][time] ** (1/2)
+
+                    conc_approx = (concentration_TS[peace_num][time] + concentration_TS[peace_num+1][time]) / 2
+                    temper_approx = (temperature_TS[peace_num][time] + temperature_TS[peace_num+1][time]) / 2
+                    #z_eff += config['chord_%d' % (chord_num + 1)]['peaces'][peace_num] * concentration_TS[peace_num][time] ** 2 \
+                             #* temperature_TS[peace_num][time] ** (1 / 2)
+                    z_eff += config['chord_%d' % (chord_num + 1)]['peaces'][peace_num] * conc_approx ** 2 * temper_approx ** (1/2)
 
                 z_eff = z_eff * 2
                 print('time %f,chord  %d,peace %f,conc %e,temp %f' % (ADC_times[i],
@@ -79,6 +83,7 @@ for time in range(len(times_TS)):
 print(len(answer_zeff))
 print(len(times_TS))
 print(len(all_signals))
+
 writing.write_z_eff(sht_num,answer_zeff,times_TS)
 writing.write_signals(sht_num,all_signals,times_TS)
 print('end')
