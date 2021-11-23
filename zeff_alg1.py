@@ -62,14 +62,14 @@ for time in range(len(times_TS)):
                     z_eff += config['chord_%d' % (chord_num + 1)]['peaces'][peace_num] * conc_approx ** 2 * temper_approx ** (1/2)
 
                 z_eff = z_eff * 2
-                print('time %f,chord  %d,peace %f,conc %e,temp %f' % (ADC_times[i],
-                                                                     (chord_num + 1),
-                                                                     config['chord_%d' % (chord_num + 1)]['peaces'][-1],
-                                                                     concentration_TS[peace_num+1][time],
-                                                                     temperature_TS[peace_num+1][time]))
+                #print('time %f,chord  %d,peace %f,conc %e,temp %f' % (ADC_times[i],
+                #                                                    (chord_num + 1),
+                #                                                   config['chord_%d' % (chord_num + 1)]['peaces'][-1],
+                #                                                     concentration_TS[peace_num+1][time],
+                #                                                     temperature_TS[peace_num+1][time]))
 
                 z_eff += config['chord_%d' % (chord_num + 1)]['peaces'][-1] * concentration_TS[peace_num + 1][time] ** 2 \
-                         * temperature_TS[peace_num+1][-1] ** (1/2)
+                         * temperature_TS[peace_num+1][time] ** (1/2)
 
                 signal = average_ADC[chord_num][i]
                 signal_in_use.append(signal)

@@ -8,7 +8,6 @@ def write_all_ch(sht_num,ch_num,data):
                 line += '%.4f\t' % data[j][i]
             file.write(line +'\n')
 
-
 def write_TS_data(sht_num,temperature,concentration,times):
     number_of_poly = 10
     with open('D:\Ioffe\slowADC\calculations\sht%d\%d_TS_all_data.txt' % (sht_num,sht_num) ,'w') as file:
@@ -51,9 +50,9 @@ def write_process_ADCdata(sht_num, adc_data,times):
                 line += '%.3e, ' % adc_data[i][j]
             file.write(line + '\n')
 
-def write_ADCdata_txt(sht_num, adc_data,times):
-    number_of_poly = 9
-    with open('D:\Ioffe\slowADC\calculations\sht%d\%d_process_ADC_ch1_data.txt' % (sht_num,sht_num), 'w') as file:
+def write_ADCdata_txt(sht_num, adc_data,times,ch_num):
+    number_of_poly = len(adc_data)
+    with open('D:\Ioffe\slowADC\calculations\sht%d\%d_process_ADC_ch%d_data.txt' % (sht_num,sht_num,ch_num), 'w') as file:
         line = 'time,'
         for i in range(number_of_poly):
             line += 'poly%d, ' % (i+1)
@@ -82,7 +81,7 @@ def write_z_eff(sht_num,z_eff,times):
 
         for j in range(len(z_eff[0])):
             line = '%d, ' % int(j+1)
-            for i in range(len(times)):
+            for i in range(len(z_eff)):
                 line += '%.3e, ' % z_eff[i][j]
             file.write(line + '\n')
 
