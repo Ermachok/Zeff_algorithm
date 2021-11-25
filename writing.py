@@ -59,7 +59,7 @@ def write_ADCdata_txt(sht_num, adc_data,times,ch_num):
         file.write(line + '\n')
 
         for j in range(len(times)):
-            line = '%.3f,' % (times[j])
+            line = '%.3f, ' % (times[j])
             for i in range(len(adc_data)):
                 line += '%.3e, ' % adc_data[i][j]
             file.write(line + '\n')
