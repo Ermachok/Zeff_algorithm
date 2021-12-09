@@ -32,7 +32,7 @@ class Cursor:
     def __init__(self, ax):
         self.ax = ax
         #self.lx = ax.axhline(color='k', linewidth = 0.3 )  # the horiz line
-        #self.ly = ax.axvline(color='k', linewidth = 0.3 )  # the vert line
+        self.ly = ax.axvline(color='k', linewidth = 0.3 )  # the vert line
 
         # text location in axes coords
         self.txt = ax.text(0.7, 0.9, '', transform=ax.transAxes)
@@ -44,7 +44,7 @@ class Cursor:
         x, y = event.xdata, event.ydata
         # update the line positions
         #self.lx.set_ydata(y)
-        #self.ly.set_xdata(x)
+        self.ly.set_xdata(x)
 
         self.txt.set_text('x=%1.2f' % (x))
         self.ax.figure.canvas.draw()
@@ -126,8 +126,10 @@ class InteractiveLegend(object):
     def show(self):
         plt.show()
 
+sht_num = 40701
+ch_num = 2
 
-with open ("D:\Ioffe\slowADC\calculations\sht40701\\40701_process_ADC_ch1_data.txt", "r") as file:
+with open ("D:\Ioffe\slowADC\calculations\sht%d\\%d_process_ADC_ch%d_data.txt" %(sht_num, sht_num, ch_num), "r") as file:
     lines = file.readlines()
 
 y = []
@@ -146,21 +148,24 @@ for j in range(1, 11):
 
 fig, ax = plt.subplots()
 for i in range(len(y)):
-    ax.plot(x, y[i], label=r"poly %i".format(i) %(i+1), linewidth = 0.75 )
+    ax.plot(x, y[i], label=r"poly %i".format(i) %(i+1), linewidth = 0.9 )
 
 ax.legend(loc='upper left', bbox_to_anchor=(1.05, 1),
           ncol=2, borderaxespad=0)
 fig.subplots_adjust(right=0.8)
-fig.suptitle('Right-click to hide all\nMiddle-click to show all',
+fig.suptitle('Shot number %d' %sht_num,
              va='top', size='large')
 
 leg = interactive_legend()
 #cursor = Cursor(ax)
 #fig.canvas.mpl_connect('motion_notify_event', cursor.mouse_move)
 
-cursor = Cursor(ax)
-fig.canvas.mpl_connect('motion_notify_event', cursor.mouse_move)
-
+#cursor = Cursor(ax)
+#fig.canvas.mpl_connect('motion_notify_event', cursor.mouse_move)
+plt.xlim(100,250)
+ax.minorticks_on()
+ax.grid()
+ax.grid(which='minor', linestyle = '--')
 plt.show()
 
 

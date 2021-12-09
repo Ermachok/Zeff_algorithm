@@ -4,7 +4,7 @@ import os
 import sys
 
 result = []
-adc_range = 5
+adc_range = 10
 ch_count = 16
 
 with open('sht_number.txt','r') as shot_file:
@@ -42,7 +42,6 @@ for ip in ADC_ip:
             chan = [0 for i in range(ch_count)]
 
             for ch in range(16):
-
                 temp = m[ch * 2 + j * (ch_count*2) ] + m[ch * 2 + 1 + j * (ch_count*2)] * 256
 
                 if temp / 32767 >= 1:
