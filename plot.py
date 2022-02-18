@@ -126,8 +126,8 @@ class InteractiveLegend(object):
     def show(self):
         plt.show()
 
-sht_num = 40701
-ch_num = 2
+sht_num = 41567
+ch_num = 1
 
 with open ("D:\Ioffe\slowADC\calculations\sht%d\\%d_process_ADC_ch%d_data.txt" %(sht_num, sht_num, ch_num), "r") as file:
     lines = file.readlines()
@@ -172,3 +172,4 @@ plt.show()
 
 #temp = lines[1].split(',')
 #print(temp[0])
+

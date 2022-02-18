@@ -1,9 +1,8 @@
-from bokeh.models import ColumnDataSource, Label, LabelSet, Range1d
 from bokeh.layouts import layout
 from bokeh.models import Div, RangeSlider, Spinner
 from bokeh.plotting import figure, show
 
-sht_num = 41035
+sht_num = 41567
 ch_num = 2
 
 with open ("D:\Ioffe\slowADC\calculations\sht%d\\%d_process_ADC_ch%d_data.txt" %(sht_num, sht_num, ch_num), "r") as file:

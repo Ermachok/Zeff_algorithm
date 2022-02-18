@@ -87,7 +87,7 @@ def get_from_json_ADCdata_ch(sht_num,ch_num):
 
     ADC_num = 4
     adc_time = []
-    poly_ch1 = []
+    poly_ch = []
     with open('D:\Ioffe\slowADC\calculations\sht%d\\192.168.10.50.json' % (sht_num), 'r') as file:
 
         ADC_data_file = json.load(file)
@@ -103,15 +103,15 @@ def get_from_json_ADCdata_ch(sht_num,ch_num):
                         ch = []
                         for i in range(1, len(ADC_data_file)):
                             ch.append(float(ADC_data_file[i]['ch'][j*5 + ch_num]))
-                        poly_ch1.append(ch)
+                        poly_ch.append(ch)
             except FileNotFoundError:
                 print('ti lox')
                 for j in range(3):
                     ch = []
                     for i in range(1, len(ADC_data_file)):
                         ch.append(1e-4)
-                    poly_ch1.append(ch)
-    return adc_time, poly_ch1
+                    poly_ch.append(ch)
+    return adc_time, poly_ch
 
 
 
